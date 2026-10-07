@@ -1,6 +1,8 @@
 # Changelog
 
 ## 1.2.0
+First release published on GitHub. It also includes every fix from 1.1.0 and 1.0.0 (Oreganized, Deep Aether, Ribbits, Create).
+
 - Croaks 2.0.0: a raid wave whose spawn spot never works no longer hangs the server forever (`CroaksRaidMixin`).
   `RaidOnEntityTickUpdateProcedure` spawned croak groups in a `while` loop with no attempt limit; it now stops after
   64 attempts and stores the wave's MaxHealth the same way the original does after the loop.

@@ -1,0 +1,65 @@
+name: Release
+
+# Publishing a version: bump version= in neoforge.mods.toml, add a "## <version>" section to
+# CHANGELOG.md, commit, then:  git tag -a v<version> -m "Nimura Patches <version>" && git push --follow-tags
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v5
+
+      - name: Check the tag matches the mod version
+        id: version
+        run: |
+          version=$(sed -n 's/^version="\(.*\)"/\1/p' src/main/resources/META-INF/neoforge.mods.toml)
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match version=\"$version\" in neoforge.mods.toml"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        run: ./gradlew build
+
+      - name: Write release notes from CHANGELOG.md
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          awk -v v="## $VERSION" '$0 == v {found=1; next} found && /^## / {exit} found' CHANGELOG.md > changes.md
+          if [ ! -s changes.md ]; then
+            echo "::error::CHANGELOG.md has no '## $VERSION' section"
+            exit 1
+          fi
+          {
+            echo "**For Minecraft 1.21.1 · NeoForge 21.1.x**"
+            echo
+            echo "### Changes"
+            cat changes.md
+            echo
+            echo "### Install"
+            echo "Download \`nimurapatches-$VERSION.jar\` below and put it in your instance's \`mods/\` folder (server and clients)."
+            echo "Remove any older \`nimurapatches-*.jar\`. Full list of fixes: [README](https://github.com/${GITHUB_REPOSITORY}#what-it-fixes)."
+          } > notes.md
+          cat notes.md
+
+      - name: Publish the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "build/libs/nimurapatches-$VERSION.jar" \
+            --verify-tag --title "Nimura Patches $VERSION" --notes-file notes.md

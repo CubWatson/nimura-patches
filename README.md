@@ -18,6 +18,13 @@ and the game logs a warning. It never crashes the game. Remove a patch once the 
 
 See [CHANGELOG.md](CHANGELOG.md) for details per version.
 
+## Download
+
+[![Latest release](https://img.shields.io/github/v/release/CubWatson/nimura-patches?label=download)](https://github.com/CubWatson/nimura-patches/releases/latest)
+
+Get the jar from **[Releases](https://github.com/CubWatson/nimura-patches/releases)**. The newest version is at the top,
+and each release says what changed.
+
 ## Install
 
 Drop `nimurapatches-<version>.jar` into the instance's `mods/` folder. It must be installed on the **server**; clients
@@ -37,6 +44,18 @@ Locally (JDK 21; the first run downloads Minecraft/NeoForge):
 ```
 
 The version comes from `src/main/resources/META-INF/neoforge.mods.toml`.
+
+## Releasing a new version
+
+1. Bump `version=` in `src/main/resources/META-INF/neoforge.mods.toml`.
+2. Add a `## <version>` section at the top of `CHANGELOG.md`.
+3. Commit, then tag and push:
+   ```sh
+   git tag -a v1.2.0 -m "Nimura Patches 1.2.0"
+   git push --follow-tags
+   ```
+The **Release** workflow builds the jar, checks that the tag matches the mod version and has a changelog entry, and
+publishes a GitHub Release with the jar attached and the changelog section as its notes.
 
 ## Layout
 
