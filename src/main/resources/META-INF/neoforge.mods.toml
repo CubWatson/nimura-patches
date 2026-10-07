@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+
+[[mods]]
+modId="nimurapatches"
+version="1.1.0"
+displayName="Nimura Patches"
+authors="Kevin (CubWatson)"
+description='''Small compatibility fixes for the Nimura modpack:
+- Oreganized: lead door no longer crashes the world when one half is missing.
+- Deep Aether: a failed player login no longer crashes the server in the logout handler.
+- Ribbits: a ribbit without a home position no longer crashes the server.
+- Create: a potato cannon projectile with a missing projectile type removes itself instead of crashing.'''
+
+[[mixins]]
+config="nimurapatches.mixins.json"
+
+[[dependencies.nimurapatches]]
+modId="neoforge"
+type="required"
+versionRange="[21.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.nimurapatches]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.21.2)"
+ordering="NONE"
+side="BOTH"
