@@ -14,6 +14,7 @@ and the game logs a warning. It never crashes the game. Remove a patch once the 
 | Deep Aether 1.1.5.1 | The player-logout handler crashes the whole server if a login failed part-way | Exception is caught and logged as a warning |
 | Ribbits 4.1.6 | A ribbit with no home position crashes the server on its first AI tick | A ribbit with no home uses its current position |
 | Create 6.0.10 | A potato cannon projectile with no projectile type crashes the server every tick | The projectile removes itself |
+| Croaks 2.0.0 | A raid wave keeps spawning until enough croaks exist, with no attempt limit. If the spawn spot never works, the server hangs forever | Wave spawning stops after 64 attempts and the raid carries on with whatever spawned |
 
 See [CHANGELOG.md](CHANGELOG.md) for details per version.
 

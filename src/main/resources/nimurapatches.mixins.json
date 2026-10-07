@@ -4,6 +4,7 @@
   "package": "dev.nimura.patches.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "CroaksRaidMixin",
     "DAGeneralEventsMixin",
     "LeadDoorBlockMixin",
     "PotatoProjectileEntityMixin",
