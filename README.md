@@ -26,16 +26,17 @@ installed just does nothing.
 
 ## Build
 
-Requires only a JDK 21:
+[![Build](https://github.com/CubWatson/nimura-patches/actions/workflows/build.yml/badge.svg)](https://github.com/CubWatson/nimura-patches/actions/workflows/build.yml)
+
+GitHub Actions builds every push. The jar is attached to each run under **Artifacts**.
+
+Locally (JDK 21; the first run downloads Minecraft/NeoForge):
 
 ```sh
-./build.sh          # → build/nimurapatches-<version>.jar
+./gradlew build     # → build/libs/nimurapatches-<version>.jar
 ```
 
-There's no Gradle setup yet. The mixins name the classes they patch as strings, so the code only needs a handful of
-Minecraft / NeoForge / Mixin signatures to compile. Those are in `stubs/` as compile-only copies; they are never
-packaged, and the real classes are used at runtime. Each stub signature was checked against the real game and mod
-bytecode before use.
+The version comes from `src/main/resources/META-INF/neoforge.mods.toml`.
 
 ## Layout
 
@@ -43,7 +44,7 @@ bytecode before use.
 src/main/java/dev/nimura/patches/          mod entry point
 src/main/java/dev/nimura/patches/mixin/    one mixin per fix (each file explains the bug)
 src/main/resources/                        neoforge.mods.toml, mixin config
-stubs/                                     compile-only API signatures (not shipped)
+src/stubs/java/                             compile-only placeholders for patched mods' classes (not shipped)
 ```
 
 ## License

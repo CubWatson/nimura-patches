@@ -1,0 +1,38 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.78'
+}
+
+// The version lives in one place: META-INF/neoforge.mods.toml
+def modsToml = file('src/main/resources/META-INF/neoforge.mods.toml').text
+version = (modsToml =~ /(?m)^version="([^"]+)"/)[0][1]
+group = 'dev.nimura.patches'
+base { archivesName = 'nimurapatches' }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+neoForge {
+    version = project.neo_version
+
+    mods {
+        nimurapatches {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+// Compile-only placeholders for classes from patched mods that a mixin has to name in a
+// field type (currently just Create's PotatoCannonProjectileType). Never packaged; the
+// real classes are used at runtime. Everything from Minecraft/NeoForge/Mixin is real.
+sourceSets {
+    stubs
+}
+
+dependencies {
+    compileOnly sourceSets.stubs.output
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+}
