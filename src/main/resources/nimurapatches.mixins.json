@@ -10,6 +10,9 @@
     "PotatoProjectileEntityMixin",
     "RibbitEntityMixin"
   ],
+  "client": [
+    "RoadWeaverLoadingScreenMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

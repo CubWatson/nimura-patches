@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+- RoadWeaver 2.3.1: the world-loading screen no longer looks cluttered (`RoadWeaverLoadingScreenMixin`, client only).
+  RoadWeaver draws its see-through "Initial Generation" panel on top of the vanilla screen, so the chunk map and
+  "N%" text showed through the middle of it. While RoadWeaver's panel is showing, those two vanilla elements are
+  skipped; once RoadWeaver finishes, or if it isn't installed, the vanilla screen is unchanged.
+
 ## 1.2.0
 First release published on GitHub. It also includes every fix from 1.1.0 and 1.0.0 (Oreganized, Deep Aether, Ribbits, Create).
 
