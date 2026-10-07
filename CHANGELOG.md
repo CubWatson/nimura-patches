@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+- Removed the RoadWeaver loading-screen patch (`RoadWeaverLoadingScreenMixin` and its `RoadWeaverOverlay` helper).
+  RoadWeaver was taken out of Nimura, so the patch has nothing left to fix. All other fixes are unchanged.
+
 ## 1.3.0
 - RoadWeaver 2.3.1: the world-loading screen no longer looks cluttered (`RoadWeaverLoadingScreenMixin`, client only).
   RoadWeaver draws its see-through "Initial Generation" panel on top of the vanilla screen, so the chunk map and
