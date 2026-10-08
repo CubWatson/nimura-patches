@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.0
+- Mekanism 10.7.19 + Mekanism Unleashed 0.3.2: chemical machines no longer use far too little chemical when they have
+  speed upgrades (`MekanismChemicalUpgradeMixin`). Unleashed raises the upgrade cap from 8 to 32 and rewrites Mekanism's
+  speed, energy and capacity formulas, but not the two chemical ones (`getGasPerTickMeanMultiplier`, `getBaseUsage`),
+  which still divided by the new cap of 32. With 8 speed upgrades a Purification Chamber used ~57 oxygen per operation
+  instead of stock Mekanism's ~2000. Now 0-8 upgrades cost exactly what stock Mekanism charges; above 8 the per-tick
+  chemical rate stays at the stock maximum. Without Mekanism Unleashed the patch changes nothing.
+
 ## 1.4.0
 - Removed the RoadWeaver loading-screen patch (`RoadWeaverLoadingScreenMixin` and its `RoadWeaverOverlay` helper).
   RoadWeaver was taken out of Nimura, so the patch has nothing left to fix. All other fixes are unchanged.

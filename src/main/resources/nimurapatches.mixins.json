@@ -7,6 +7,7 @@
     "CroaksRaidMixin",
     "DAGeneralEventsMixin",
     "LeadDoorBlockMixin",
+    "MekanismChemicalUpgradeMixin",
     "PotatoProjectileEntityMixin",
     "RibbitEntityMixin"
   ],
