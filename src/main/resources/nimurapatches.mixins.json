@@ -6,6 +6,7 @@
   "mixins": [
     "CroaksRaidMixin",
     "DAGeneralEventsMixin",
+    "IERevolverFlareMixin",
     "LeadDoorBlockMixin",
     "MekanismChemicalUpgradeMixin",
     "PotatoProjectileEntityMixin",

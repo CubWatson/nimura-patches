@@ -23,7 +23,7 @@ neoForge {
 
 // Compile-only placeholders for classes from patched mods that a mixin has to name in a
 // field or parameter type (Create's PotatoCannonProjectileType, Mekanism's Upgrade and
-// IUpgradeTile). Never packaged; the real classes are used at runtime. Everything from
+// IUpgradeTile, a few Immersive Engineering types). Never packaged; the real classes are used at runtime. Everything from
 // Minecraft/NeoForge/Mixin is real.
 sourceSets {
     stubs

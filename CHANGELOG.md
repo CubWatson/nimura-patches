@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.0
+- Immersive Engineering 12.4.2: a revolver flare without flare bullet data (spawned with `/summon` or a command block)
+  no longer crashes the game of every player who can see it (`IERevolverFlareMixin`). Its client tick read the colour
+  with `BulletData.getFor`, which throws when the data isn't a flare's; it now uses IE's own `getForOptional` and falls
+  back to white. Flares fired from a revolver always have their colour and look exactly the same as before.
+
 ## 1.5.0
 - Mekanism 10.7.19 + Mekanism Unleashed 0.3.2: chemical machines no longer use far too little chemical when they have
   speed upgrades (`MekanismChemicalUpgradeMixin`). Unleashed raises the upgrade cap from 8 to 32 and rewrites Mekanism's
