@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.0
+- Removed the Oreganized lead-door patch (`LeadDoorBlockMixin`). Oreganized was taken out of Nimura, so the patch has
+  nothing left to fix. All other fixes are unchanged. Recover it from tag `v1.6.1` if Oreganized ever comes back.
+
 ## 1.6.1
 - Immersive Engineering: the 1.6.0 flare fix only covered the client. On the server a flare created without its data has
   no bullet data at all, so `getColour()` (server tick → `spawnParticles`) still crashed the server. `getColour()` now

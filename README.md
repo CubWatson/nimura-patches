@@ -10,7 +10,6 @@ and the game logs a warning. It never crashes the game. Remove a patch once the 
 
 | Mod (version) | Bug | Fix |
 |---|---|---|
-| Oreganized 5.3.0 | `LeadDoorBlock.getInducedGoopyness` reads a door property from a block that may not be a door → server crash | Falls back to Oreganized's normal melting logic |
 | Deep Aether 1.1.5.1 | The player-logout handler crashes the whole server if a login failed part-way | Exception is caught and logged as a warning |
 | Ribbits 4.1.6 | A ribbit with no home position crashes the server on its first AI tick | A ribbit with no home uses its current position |
 | Create 6.0.10 | A potato cannon projectile with no projectile type crashes the server every tick | The projectile removes itself |
