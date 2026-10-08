@@ -1,10 +1,12 @@
 # Changelog
 
 ## 1.6.0
-- Immersive Engineering 12.4.2: a revolver flare without flare bullet data (spawned with `/summon` or a command block)
-  no longer crashes the game of every player who can see it (`IERevolverFlareMixin`). Its client tick read the colour
-  with `BulletData.getFor`, which throws when the data isn't a flare's; it now uses IE's own `getForOptional` and falls
-  back to white. Flares fired from a revolver always have their colour and look exactly the same as before.
+- Immersive Engineering 12.4.2: a revolver flare entity created without its flare bullet data no longer crashes the
+  game of every player who can see it (`IERevolverFlareMixin`). Its client tick read the colour with
+  `BulletData.getFor`, which throws when the data isn't a flare's; it now uses IE's own `getForOptional` and falls back
+  to white. Only code that creates the entity directly can produce such a flare (another mod, a script, or the Nimura
+  test harness, which found it). `/summon`, command blocks and spawners can't: IE refuses to load a flare without its
+  data. Flares fired from a revolver always have their colour and look exactly the same as before.
 
 ## 1.5.0
 - Mekanism 10.7.19 + Mekanism Unleashed 0.3.2: chemical machines no longer use far too little chemical when they have

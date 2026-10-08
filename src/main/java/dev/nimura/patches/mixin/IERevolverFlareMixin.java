@@ -9,8 +9,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 /**
- * Immersive Engineering 12.4.2: a revolver flare entity without flare bullet data (summoned with /summon or a command
- * block) crashes the game of every player who can see it. Its client tick calls {@code getColour()}, which reads the
+ * Immersive Engineering 12.4.2: a revolver flare entity without flare bullet data crashes the game of every player who
+ * can see it. Only code that creates the entity directly can make one (another mod, a script; found by the Nimura test
+ * harness): /summon, command blocks and spawners go through IE's NBT loader, which rejects a flare without data. Its client tick calls {@code getColour()}, which reads the
  * colour with {@code BulletData.getFor(FLARE_TYPE)}; that throws a NullPointerException when the stored bullet isn't
  * a flare. Flares fired from a revolver always carry their colour (it's saved with the entity too), so they never hit this.
  *
