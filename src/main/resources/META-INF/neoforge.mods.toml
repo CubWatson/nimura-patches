@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="nimurapatches"
-version="1.6.0"
+version="1.6.1"
 displayName="Nimura Patches"
 authors="Kevin (CubWatson)"
 description='''Small compatibility fixes for the Nimura modpack:

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.1
+- Immersive Engineering: the 1.6.0 flare fix only covered the client. On the server a flare created without its data has
+  no bullet data at all, so `getColour()` (server tick → `spawnParticles`) still crashed the server. `getColour()` now
+  returns white for missing data too. Found by the Nimura entity harness.
+
 ## 1.6.0
 - Immersive Engineering 12.4.2: a revolver flare entity created without its flare bullet data no longer crashes the
   game of every player who can see it (`IERevolverFlareMixin`). Its client tick read the colour with
