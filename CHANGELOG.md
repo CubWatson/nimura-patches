@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.0
+- Moonlight 1.21.1-3.7.1: fixed an intermittent crash at game start ("Supplementaries Squared has failed to load
+  correctly", `ConcurrentModificationException`) (`MoonlightProviderRaceMixin`). NeoForge builds mods in parallel, and
+  Supplementaries and Supplementaries Squared both register Moonlight dynamic-resource providers at the same moment;
+  Moonlight's provider list had no locking, so one mod could change it while the other was reading it. Registration now
+  runs under a lock. Found by the Nimura test loop (1 crash in about 9 launches); nothing changes when the race doesn't
+  happen.
+
 ## 1.7.0
 - Removed the Oreganized lead-door patch (`LeadDoorBlockMixin`). Oreganized was taken out of Nimura, so the patch has
   nothing left to fix. All other fixes are unchanged. Recover it from tag `v1.6.1` if Oreganized ever comes back.

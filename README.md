@@ -16,6 +16,7 @@ and the game logs a warning. It never crashes the game. Remove a patch once the 
 | Croaks 2.0.0 | A raid wave keeps spawning until enough croaks exist, with no attempt limit. If the spawn spot never works, the server hangs forever | Wave spawning stops after 64 attempts and the raid carries on with whatever spawned |
 | Mekanism 10.7.19 + Mekanism Unleashed 0.3.2 | Unleashed raises the upgrade cap to 32 but Mekanism's chemical formulas still divide by it, so speed-upgraded chemical machines (Purification Chamber, Chemical Injection Chamber, Osmium Compressor, Dissolution Chamber, factories) use up to ~35× too little chemical | Chemical use is measured against Mekanism's normal 8-upgrade scale again: 0–8 upgrades match stock Mekanism, more than 8 keep the stock maximum rate |
 | Immersive Engineering 12.4.2 | A revolver flare created in code without its bullet data (by another mod or a script) crashes every player who can see it | The flare falls back to a white colour |
+| Moonlight 1.21.1-3.7.1 (with Supplementaries + Supplementaries Squared) | Mods register Moonlight resource providers from parallel loading threads with no locking, so the game randomly fails to start (`ConcurrentModificationException`, "Supplementaries Squared has failed to load correctly") | Provider registration runs under a lock |
 
 See [CHANGELOG.md](CHANGELOG.md) for details per version.
 

@@ -8,6 +8,7 @@
     "DAGeneralEventsMixin",
     "IERevolverFlareMixin",
     "MekanismChemicalUpgradeMixin",
+    "MoonlightProviderRaceMixin",
     "PotatoProjectileEntityMixin",
     "RibbitEntityMixin"
   ],
